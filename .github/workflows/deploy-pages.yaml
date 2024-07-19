@@ -23,7 +23,7 @@ jobs:
         with:
           node-version-file: package.json
       - run: corepack enable
-      - run: npm i
+      - run: npm ci
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
