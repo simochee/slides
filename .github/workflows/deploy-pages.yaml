@@ -28,7 +28,7 @@ jobs:
       - uses: actions/github-script@v7
         with:
           script: |-
-            const { readdir, mkdir, rename } = require('node:fs/promise');
+            const { readdir, mkdir, rename } = require('fs/promise');
             ;(async function main() {
               await mkdir('docs', { recursive: true });
 
