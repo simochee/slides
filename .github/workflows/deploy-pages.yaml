@@ -28,16 +28,17 @@ jobs:
       - uses: actions/github-script@v7
         with:
           script: |-
-            import { readdir, mkdir, rename } from 'node:fs/promise';
+            const { readdir, mkdir, rename } = require('node:fs/promise');
+            ;(async function main() {
+              await mkdir('docs', { recursive: true });
 
-            await mkdir('docs', { recursive: true });
-
-            for (const { isDirectory, name } of await readdir('apps', { withFileTypes: true })) {
-              if (isDirectory()) {
-                await rename(`apps/${name}/dist`, `docs/${name}`);
-                console.log(`Moved ${name}/dist to docs/${name}`);
+              for (const { isDirectory, name } of await readdir('apps', { withFileTypes: true })) {
+                if (isDirectory()) {
+                  await rename(`apps/${name}/dist`, `docs/${name}`);
+                  console.log(`Moved ${name}/dist to docs/${name}`);
+                }
               }
-            }
+            })();
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs/
