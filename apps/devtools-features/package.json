@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "build": "slidev build",
-    "postbuild": "mv dist ../../docs/$npm_package_name",
     "dev": "slidev --open",
     "export": "slidev export"
   },

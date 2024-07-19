@@ -25,6 +25,19 @@ jobs:
       - run: corepack enable
       - run: npm ci
       - run: npm run build
+      - uses: actions/github-script@v7
+        with:
+          scripts: |-
+            import { readdir, mkdir, rename } from 'node:fs/promise';
+
+            await mkdir('docs', { recursive: true });
+
+            for (const { isDirectory, name } of await readdir('apps', { withFileTypes: true })) {
+              if (isDirectory()) {
+                await rename(`apps/${name}/dist`, `docs/${name}`);
+                console.log(`Moved ${name}/dist to docs/${name}`);
+              }
+            }
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs/
