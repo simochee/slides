@@ -1,0 +1,21 @@
+{
+  "name": "slides",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "new": "hygen slide new",
+    "build": "turbo build",
+    "dev": "turbo dev"
+  },
+  "packageManager": "npm@10.8.2+sha256.c8c61ba0fa0ab3b5120efd5ba97fdaf0e0b495eef647a97c4413919eda0a878b",
+  "volta": {
+    "node": "22.5.0"
+  },
+  "dependencies": {
+    "hygen": "^6.2.11",
+    "turbo": "^2.0.7"
+  }
+}
