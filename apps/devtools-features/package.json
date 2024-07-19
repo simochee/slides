@@ -1,8 +1,5 @@
----
-to: apps/<%= slug %>/package.json
----
 {
-  "name": "<%= slug %>",
+  "name": "devtools-features",
   "type": "module",
   "private": true,
   "scripts": {
